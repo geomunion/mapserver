@@ -1,5 +1,11 @@
 FIND_PACKAGE(PHP7 REQUIRED)
-FIND_PACKAGE(SWIG 3.0.11 REQUIRED)
+
+if(NOT WIN32)
+  FIND_PACKAGE(SWIG 3.0.11 REQUIRED)
+else()
+  FIND_PACKAGE(SWIG 3.0.12 REQUIRED)
+endif()
+
 INCLUDE(${SWIG_USE_FILE})
 
 if(WIN32)
@@ -37,3 +43,6 @@ target_link_libraries(php_mapscriptng mapserver)
 
 set_target_properties(${SWIG_MODULE_mapscript_REAL_NAME} PROPERTIES PREFIX "")
 install(TARGETS php_mapscriptng DESTINATION ${PHP7_EXTENSION_DIR})
+
+# TODO: put mapscript.php into right place
+#install(FILES ${CMAKE_CURRENT_BINARY_DIR}/mapscript.php DESTINATION ${PHP7_INCLUDE_PATH})
