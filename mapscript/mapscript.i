@@ -30,11 +30,11 @@
 ============================================================================
 */
 
-#ifdef SWIGCSHARP
-%module mapscriptng
-#else
+// #ifdef SWIGCSHARP
+// %module mapscriptng
+// #else
 %module mapscript
-#endif
+// #endif
 
 #ifdef SWIGCSHARP
 %ignore frompointer;
